@@ -1,0 +1,31 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post" asp-action="Edit">
+    <div class="p-3 border mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit category</h2>
+        </div>
+        <hr />
+        <div class="mb-3">
+            <label asp-for="Name">Category name</label>
+            <input asp-for="Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder">Display order</label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span class="text-danger" asp-validation-for="DisplayOrder"></span>
+        </div>
+        <button class="btn btn-secondary" type="submit">Submit</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
