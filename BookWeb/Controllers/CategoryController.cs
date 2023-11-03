@@ -31,6 +31,7 @@ namespace BookWeb.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "New category created.";
                 return RedirectToAction("Index");
             }
             else return View(obj);
@@ -44,7 +45,7 @@ namespace BookWeb.Controllers
                 return NotFound();
             }
             var category = _db.Categories.Find(id);
-            if(category == null)
+            if (category == null)
             {
                 return NotFound();
             }
@@ -59,6 +60,7 @@ namespace BookWeb.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Updated category";
                 return RedirectToAction("Index");
             }
             else return View(obj);
@@ -82,9 +84,10 @@ namespace BookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Category obj)
         {
-                _db.Categories.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+            _db.Categories.Remove(obj);
+            _db.SaveChanges();
+            TempData["success"] = "Category deleted";
+            return RedirectToAction("Index");
         }
     }
 }
